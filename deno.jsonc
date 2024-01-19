@@ -1,6 +1,6 @@
 {
     "tasks": {
-      "ca": "deno run --allow-env --allow-net --allow-run --allow-read --allow-write --unstable src/doc.ts"
+      "doc": "deno run --allow-env --allow-net --allow-run --allow-read --allow-write --unstable src/doc.ts"
     },
     "unstable": ["byonm", "net", "fs"],
     "fmt": {
