@@ -1,5 +1,6 @@
 import memdown from "memdown";
 import yargs from "yargs/yargs";
+import Ajv from "ajv"
 import {
     ECDSA,
     generateSigningKey,
@@ -11,7 +12,7 @@ import { FwTracer } from "@ndn/fw";
 import { Name } from "@ndn/packet";
 import { Endpoint } from "@ndn/endpoint";
 import { openKeyChain } from "@ndn/cli-common";
-import { NdnSvsAdaptor } from "@ucla-irl/ndnts-aux";
+import { Workspace } from "@ucla-irl/ndnts-aux";
 // import { SyncAgent } from "@ucla-irl/ndnts-aux";
 import { getSafeBag } from "./keychain-bypass.ts";
 import { WsConnectMgr } from "./connect.ts";
@@ -19,6 +20,16 @@ import { WsConnectMgr } from "./connect.ts";
 export const endpoint: Endpoint = new Endpoint()
 export const keyChain: KeyChain = openKeyChain();
 export const UseAutoAnnouncement = false
+
+// syncedstore
+import { syncedStore, getYjsDoc } from "@syncedstore/core";
+
+// Create your SyncedStore store
+// We create a store which contains an array (myArray) and an object (myObject)
+export const store = syncedStore({ myArray: [], myObject: {} });
+
+// Create a document that syncs automatically using Y-WebRTC
+const doc = getYjsDoc(store)
 
 async function bootstrap(certname: string, passphrase: string) {
     await openKeyChain();
@@ -29,6 +40,11 @@ async function bootstrap(certname: string, passphrase: string) {
     const [nfdSigner, _] = await generateSigningKey(safebag.certificate.name, algo, { importPkcs8: [pkcs8, key.spki] });
     return [nfdSigner, safebag.certificate]
 }
+
+async function prepWorkspace() {
+    store.myObject.objectID =  "124"
+}
+
 // ============= Connectivity =============
 const run = async () => {
   let nfdCmdSigner, nfdCertificate, face, wsConn

@@ -85,7 +85,6 @@ export class WsConnectMgr {
             if (this.nfdCertificate) {
               nfdCertProducer = this.endpoint.produce(this.nfdCertificate.name, async () => this.nfdCertificate?.data)
             }
-      
             // Register prefixes
             const cr = await nfdmgmt.invoke("rib/register", {
               name: this.appPrefix!,

@@ -66,8 +66,11 @@ dependencies:
     specifier: npm:@types/web@0.0.122
     version: /@types/web@0.0.122
   '@ucla-irl/ndnts-aux':
-    specifier: ^1.0.3
-    version: 1.0.3(@ndn/endpoint@0.0.20240118-nightly-40058b1)(@ndn/fw@0.0.20240118-nightly-40058b1)(@ndn/keychain@0.0.20240118-nightly-40058b1)(@ndn/naming-convention2@0.0.20240118-nightly-40058b1)(@ndn/ndncert@0.0.20240118-nightly-40058b1)(@ndn/ndnsec@0.0.20240118-nightly-40058b1)(@ndn/nfdmgmt@0.0.20240118-nightly-40058b1)(@ndn/node-transport@0.0.20240113)(@ndn/packet@0.0.20240118-nightly-40058b1)(@ndn/segmented-object@0.0.20240118-nightly-40058b1)(@ndn/sync@0.0.20240118-nightly-40058b1)(@ndn/tlv@0.0.20240118-nightly-40058b1)(@ndn/util@0.0.20240118-nightly-40058b1)(@ndn/ws-transport@0.0.20240118-nightly-40058b1)
+    specifier: ^1.0.5
+    version: 1.0.8(@ndn/endpoint@0.0.20240124-nightly-37c6054)(@ndn/fw@0.0.20240124-nightly-37c6054)(@ndn/keychain@0.0.20240124-nightly-37c6054)(@ndn/naming-convention2@0.0.20240124-nightly-37c6054)(@ndn/ndncert@0.0.20240124-nightly-37c6054)(@ndn/ndnsec@0.0.20240124-nightly-37c6054)(@ndn/nfdmgmt@0.0.20240124-nightly-37c6054)(@ndn/node-transport@0.0.20240113)(@ndn/packet@0.0.20240124-nightly-37c6054)(@ndn/segmented-object@0.0.20240124-nightly-37c6054)(@ndn/sync@0.0.20240124-nightly-37c6054)(@ndn/tlv@0.0.20240124-nightly-37c6054)(@ndn/util@0.0.20240124-nightly-37c6054)(@ndn/ws-transport@0.0.20240124-nightly-37c6054)
+  ajv:
+    specifier: ^8.12.0
+    version: 8.12.0
   codedown:
     specifier: ^2.2.0
     version: 2.2.0
@@ -77,6 +80,9 @@ dependencies:
   memdown:
     specifier: 6.1.1
     version: 6.1.1
+  net:
+    specifier: ^1.0.2
+    version: 1.0.2
   throat:
     specifier: ^6.0.2
     version: 6.0.2
@@ -92,6 +98,9 @@ dependencies:
   yargs:
     specifier: ^17.7.2
     version: 17.7.2
+  yjs:
+    specifier: ^13.6.11
+    version: 13.6.11
 
 packages:
 
@@ -256,8 +265,8 @@ packages:
     resolution: {integrity: sha512-UMkHpx+o2xRWLJ7PmT3bBzvIA9/0oFw80oPtY/xO4jfdq+Gznn4wP7K9B/JjMxyxy+wF+5oRPIykxeBbEDjwRg==}
     dev: false
 
-  /@ucla-irl/ndnts-aux@1.0.3(@ndn/endpoint@0.0.20240118-nightly-40058b1)(@ndn/fw@0.0.20240118-nightly-40058b1)(@ndn/keychain@0.0.20240118-nightly-40058b1)(@ndn/naming-convention2@0.0.20240118-nightly-40058b1)(@ndn/ndncert@0.0.20240118-nightly-40058b1)(@ndn/ndnsec@0.0.20240118-nightly-40058b1)(@ndn/nfdmgmt@0.0.20240118-nightly-40058b1)(@ndn/node-transport@0.0.20240113)(@ndn/packet@0.0.20240118-nightly-40058b1)(@ndn/segmented-object@0.0.20240118-nightly-40058b1)(@ndn/sync@0.0.20240118-nightly-40058b1)(@ndn/tlv@0.0.20240118-nightly-40058b1)(@ndn/util@0.0.20240118-nightly-40058b1)(@ndn/ws-transport@0.0.20240118-nightly-40058b1):
-    resolution: {integrity: sha512-TtCSvlNUQWzNvIeNGyjGJRS+KlF0Z1Jqpt9PbZm+wqCFsijVD0QsBgdf0lDj9oHnsSMwgqYR/zEZWupJyaCoAA==, tarball: https://npm.pkg.github.com/download/@ucla-irl/ndnts-aux/1.0.3/8449fcca6fd7f780732bd73da6df7248bdd7e6a2}
+  /@ucla-irl/ndnts-aux@1.0.8(@ndn/endpoint@0.0.20240124-nightly-37c6054)(@ndn/fw@0.0.20240124-nightly-37c6054)(@ndn/keychain@0.0.20240124-nightly-37c6054)(@ndn/naming-convention2@0.0.20240124-nightly-37c6054)(@ndn/ndncert@0.0.20240124-nightly-37c6054)(@ndn/ndnsec@0.0.20240124-nightly-37c6054)(@ndn/nfdmgmt@0.0.20240124-nightly-37c6054)(@ndn/node-transport@0.0.20240113)(@ndn/packet@0.0.20240124-nightly-37c6054)(@ndn/segmented-object@0.0.20240124-nightly-37c6054)(@ndn/sync@0.0.20240124-nightly-37c6054)(@ndn/tlv@0.0.20240124-nightly-37c6054)(@ndn/util@0.0.20240124-nightly-37c6054)(@ndn/ws-transport@0.0.20240124-nightly-37c6054):
+    resolution: {integrity: sha512-yQlbEQqEVVQiUdYDQXX998nXrGy9CryeNiT4avIACexPFUHBp6dBBdK7EalTdBcsWCfutmjjwqRvEctJjKYcig==, tarball: https://npm.pkg.github.com/download/@ucla-irl/ndnts-aux/1.0.8/f2050d70a50d1c289f9f463679fbc3c6f2611c32}
     peerDependencies:
       '@ndn/endpoint': '>=0.0.0'
       '@ndn/fw': '>=0.0.0'
@@ -292,7 +301,7 @@ packages:
       jose: 5.2.0
       tslib: 2.6.2
       uuid: 9.0.1
-      yjs: 13.6.10
+      yjs: 13.6.11
     dev: false
 
   /@yoursunny/asn1@0.0.20200718:
@@ -516,8 +525,8 @@ packages:
       domhandler: 5.0.3
     dev: false
 
-  /dotenv@16.3.1:
-    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+  /dotenv@16.4.1:
+    resolution: {integrity: sha512-CjA3y+Dr3FyFDOAMnxZEGtnW9KBR2M0JvvUtXNW+dYJL5ROWxP9DUHCwgFqpMk0OXCc0ljhaNTr2w/kutYIcHQ==}
     engines: {node: '>=12'}
     dev: false
 
@@ -888,11 +897,11 @@ packages:
       ltgt: 2.2.1
     dev: false
 
-  /memif@0.0.20230715:
-    resolution: {integrity: sha512-v9u/jXoeJtXS/TlqYlCrnxFYCL0ErKNOyG5cKXMAOvK3d7nBfTNn1a8Kn+Lt7ZOVZ8lwLEBZ9CQqTMEAt9JP+A==}
+  /memif@0.0.20240119:
+    resolution: {integrity: sha512-TpEtTBlBLXLkeFBNdSA5Xldi6Cfk123Zld2jckFBAtMfsmM5iHiplfNaby4KqwHSJerE44mnQ88anabr2yAXGQ==}
     requiresBuild: true
     dependencies:
-      node-addon-api: 7.0.0
+      node-addon-api: 7.1.0
     dev: false
     optional: true
 
@@ -933,8 +942,13 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
-  /node-addon-api@7.0.0:
-    resolution: {integrity: sha512-vgbBJTS4m5/KkE16t5Ly0WW9hz46swAstv0hYYwMtbG7AznRhNyfLRe8HZAiWIpcHzoO7HxhLuBQj9rJ/Ho0ZA==}
+  /net@1.0.2:
+    resolution: {integrity: sha512-kbhcj2SVVR4caaVnGLJKmlk2+f+oLkjqdKeQlmUtz6nGzOpbcobwVIeSURNgraV/v3tlmGIX82OcPCl0K6RbHQ==}
+    dev: false
+
+  /node-addon-api@7.1.0:
+    resolution: {integrity: sha512-mNcltoe1R8o7STTegSOHdnJNN7s5EUvhoS7ShnTHDyOSd+8H+UdWODq6qSv67PjC8Zc5JRT8+oLAMCr0SIXw7g==}
+    engines: {node: ^16 || ^18 || >= 20}
     requiresBuild: true
     dev: false
     optional: true
@@ -1169,6 +1183,11 @@ packages:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: false
 
+  /type-fest@4.10.1:
+    resolution: {integrity: sha512-7ZnJYTp6uc04uYRISWtiX3DSKB/fxNQT0B5o1OUeCqiQiwF+JC9+rJiZIDrPrNCLLuTqyQmh4VdQqh/ZOkv9MQ==}
+    engines: {node: '>=16'}
+    dev: false
+
   /type-fest@4.9.0:
     resolution: {integrity: sha512-KS/6lh/ynPGiHD/LnAobrEFq3Ad4pBzOlJ1wAnJx9N4EYoqFhMfLIBjUT2UEx4wg5ZE+cC1ob6DCSpppVo+rtg==}
     engines: {node: '>=16'}
@@ -1317,8 +1336,8 @@ packages:
       yargs-parser: 21.1.1
     dev: false
 
-  /yjs@13.6.10:
-    resolution: {integrity: sha512-1JcyQek1vaMyrDm7Fqfa+pvHg/DURSbVo4VmeN7wjnTKB/lZrfIPhdCj7d8sboK6zLfRBJXegTjc9JlaDd8/Zw==}
+  /yjs@13.6.11:
+    resolution: {integrity: sha512-FvRRJKX9u270dOLkllGF/UDCWwmIv2Z+ucM4v1QO1TuxdmoiMnSUXH1HAcOKOrkBEhQtPTkxep7tD2DrQB+l0g==}
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
     dependencies:
       lib0: 0.2.88
@@ -1327,7 +1346,7 @@ packages:
   '@ndnts-nightly.ndn.today/autoconfig.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/autoconfig.tgz}
     name: '@ndn/autoconfig'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/endpoint': '@ndnts-nightly.ndn.today/endpoint.tgz'
       '@ndn/fw': '@ndnts-nightly.ndn.today/fw.tgz'
@@ -1347,7 +1366,7 @@ packages:
   '@ndnts-nightly.ndn.today/cli-common.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/cli-common.tgz}
     name: '@ndn/cli-common'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/autoconfig': '@ndnts-nightly.ndn.today/autoconfig.tgz'
       '@ndn/dpdkmgmt': '@ndnts-nightly.ndn.today/dpdkmgmt.tgz'
@@ -1357,7 +1376,7 @@ packages:
       '@ndn/node-transport': '@ndnts-nightly.ndn.today/node-transport.tgz'
       '@ndn/packet': '@ndnts-nightly.ndn.today/packet.tgz'
       '@ndn/util': '@ndnts-nightly.ndn.today/util.tgz'
-      dotenv: 16.3.1
+      dotenv: 16.4.1
       env-var: 7.4.1
       tslib: 2.6.2
       wtfnode: 0.9.1
@@ -1370,7 +1389,7 @@ packages:
   '@ndnts-nightly.ndn.today/dpdkmgmt.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/dpdkmgmt.tgz}
     name: '@ndn/dpdkmgmt'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/fw': '@ndnts-nightly.ndn.today/fw.tgz'
       '@ndn/l3face': '@ndnts-nightly.ndn.today/l3face.tgz'
@@ -1380,7 +1399,7 @@ packages:
       graphql-request: 6.1.0(graphql@16.8.1)
       tslib: 2.6.2
     optionalDependencies:
-      memif: 0.0.20230715
+      memif: 0.0.20240119
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -1388,7 +1407,7 @@ packages:
   '@ndnts-nightly.ndn.today/endpoint.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/endpoint.tgz}
     name: '@ndn/endpoint'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/fw': '@ndnts-nightly.ndn.today/fw.tgz'
       '@ndn/packet': '@ndnts-nightly.ndn.today/packet.tgz'
@@ -1401,7 +1420,7 @@ packages:
   '@ndnts-nightly.ndn.today/fw.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/fw.tgz}
     name: '@ndn/fw'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/packet': '@ndnts-nightly.ndn.today/packet.tgz'
       '@ndn/util': '@ndnts-nightly.ndn.today/util.tgz'
@@ -1418,7 +1437,7 @@ packages:
   '@ndnts-nightly.ndn.today/keychain.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/keychain.tgz}
     name: '@ndn/keychain'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/naming-convention2': '@ndnts-nightly.ndn.today/naming-convention2.tgz'
       '@ndn/packet': '@ndnts-nightly.ndn.today/packet.tgz'
@@ -1435,7 +1454,7 @@ packages:
   '@ndnts-nightly.ndn.today/l3face.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/l3face.tgz}
     name: '@ndn/l3face'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/fw': '@ndnts-nightly.ndn.today/fw.tgz'
       '@ndn/lp': '@ndnts-nightly.ndn.today/lp.tgz'
@@ -1448,14 +1467,14 @@ packages:
       retry: 0.13.1
       streaming-iterables: 8.0.1
       tslib: 2.6.2
-      type-fest: 4.9.0
+      type-fest: 4.10.1
       typescript-event-target: 1.1.0
     dev: false
 
   '@ndnts-nightly.ndn.today/lp.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/lp.tgz}
     name: '@ndn/lp'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/packet': '@ndnts-nightly.ndn.today/packet.tgz'
       '@ndn/tlv': '@ndnts-nightly.ndn.today/tlv.tgz'
@@ -1467,7 +1486,7 @@ packages:
   '@ndnts-nightly.ndn.today/naming-convention2.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/naming-convention2.tgz}
     name: '@ndn/naming-convention2'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/packet': '@ndnts-nightly.ndn.today/packet.tgz'
       '@ndn/tlv': '@ndnts-nightly.ndn.today/tlv.tgz'
@@ -1478,7 +1497,7 @@ packages:
   '@ndnts-nightly.ndn.today/ndncert.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/ndncert.tgz}
     name: '@ndn/ndncert'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/endpoint': '@ndnts-nightly.ndn.today/endpoint.tgz'
       '@ndn/keychain': '@ndnts-nightly.ndn.today/keychain.tgz'
@@ -1495,14 +1514,14 @@ packages:
       nodemailer: 6.9.8
       p-timeout: 6.1.2
       tslib: 2.6.2
-      type-fest: 4.9.0
+      type-fest: 4.10.1
       typescript-event-target: 1.1.0
     dev: false
 
   '@ndnts-nightly.ndn.today/ndnsec.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/ndnsec.tgz}
     name: '@ndn/ndnsec'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/keychain': '@ndnts-nightly.ndn.today/keychain.tgz'
       '@ndn/packet': '@ndnts-nightly.ndn.today/packet.tgz'
@@ -1517,7 +1536,7 @@ packages:
   '@ndnts-nightly.ndn.today/nfdmgmt.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/nfdmgmt.tgz}
     name: '@ndn/nfdmgmt'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/endpoint': '@ndnts-nightly.ndn.today/endpoint.tgz'
       '@ndn/fw': '@ndnts-nightly.ndn.today/fw.tgz'
@@ -1533,12 +1552,12 @@ packages:
   '@ndnts-nightly.ndn.today/node-transport.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/node-transport.tgz}
     name: '@ndn/node-transport'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/l3face': '@ndnts-nightly.ndn.today/l3face.tgz'
       event-iterator: 2.0.0
       tslib: 2.6.2
-      type-fest: 4.9.0
+      type-fest: 4.10.1
       url-format-lax: 2.0.0
       url-parse-lax: 5.0.0
     dev: false
@@ -1546,20 +1565,20 @@ packages:
   '@ndnts-nightly.ndn.today/packet.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/packet.tgz}
     name: '@ndn/packet'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/tlv': '@ndnts-nightly.ndn.today/tlv.tgz'
       '@ndn/util': '@ndnts-nightly.ndn.today/util.tgz'
       buffer-compare: 1.1.1
       mnemonist: 0.39.7
       tslib: 2.6.2
-      type-fest: 4.9.0
+      type-fest: 4.10.1
     dev: false
 
   '@ndnts-nightly.ndn.today/quic-transport.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/quic-transport.tgz}
     name: '@ndn/quic-transport'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/l3face': '@ndnts-nightly.ndn.today/l3face.tgz'
       tslib: 2.6.2
@@ -1568,7 +1587,7 @@ packages:
   '@ndnts-nightly.ndn.today/rdr.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/rdr.tgz}
     name: '@ndn/rdr'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/endpoint': '@ndnts-nightly.ndn.today/endpoint.tgz'
       '@ndn/naming-convention2': '@ndnts-nightly.ndn.today/naming-convention2.tgz'
@@ -1580,7 +1599,7 @@ packages:
   '@ndnts-nightly.ndn.today/repo-api.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/repo-api.tgz}
     name: '@ndn/repo-api'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/l3face': '@ndnts-nightly.ndn.today/l3face.tgz'
       '@ndn/naming-convention2': '@ndnts-nightly.ndn.today/naming-convention2.tgz'
@@ -1601,7 +1620,7 @@ packages:
   '@ndnts-nightly.ndn.today/segmented-object.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/segmented-object.tgz}
     name: '@ndn/segmented-object'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/endpoint': '@ndnts-nightly.ndn.today/endpoint.tgz'
       '@ndn/fw': '@ndnts-nightly.ndn.today/fw.tgz'
@@ -1622,7 +1641,7 @@ packages:
   '@ndnts-nightly.ndn.today/sync.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/sync.tgz}
     name: '@ndn/sync'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/endpoint': '@ndnts-nightly.ndn.today/endpoint.tgz'
       '@ndn/naming-convention2': '@ndnts-nightly.ndn.today/naming-convention2.tgz'
@@ -1646,18 +1665,18 @@ packages:
   '@ndnts-nightly.ndn.today/tlv.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/tlv.tgz}
     name: '@ndn/tlv'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/util': '@ndnts-nightly.ndn.today/util.tgz'
       mnemonist: 0.39.7
       tslib: 2.6.2
-      type-fest: 4.9.0
+      type-fest: 4.10.1
     dev: false
 
   '@ndnts-nightly.ndn.today/util.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/util.tgz}
     name: '@ndn/util'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     engines: {node: ^18.18.0 || ^20.0.0 || ^21.0.0}
     dependencies:
       '@types/minimalistic-assert': 1.0.3
@@ -1669,7 +1688,7 @@ packages:
   '@ndnts-nightly.ndn.today/ws-transport.tgz':
     resolution: {tarball: https://ndnts-nightly.ndn.today/ws-transport.tgz}
     name: '@ndn/ws-transport'
-    version: 0.0.20240118-nightly-40058b1
+    version: 0.0.20240124-nightly-37c6054
     dependencies:
       '@ndn/l3face': '@ndnts-nightly.ndn.today/l3face.tgz'
       '@types/ws': 8.5.10
