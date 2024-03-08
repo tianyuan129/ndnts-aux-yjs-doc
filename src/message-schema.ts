@@ -88,3 +88,65 @@ const messageSchema = {
 }
 const ajv = new Ajv({allowUnionTypes: true})
 export const schemaValidate = ajv.compile(messageSchema)
+
+
+const messageSchema2 =
+{
+  "type": "object",
+  "properties": {
+      "type": {
+          "type": "string",
+          "enum": ["create", "create_response", "update", "update_response", "parent", "parent_response", "update_parent"]
+      },
+      "content": {
+          "type": "object",
+          "properties": {
+              "id": {"type": "string"},
+              "uuid": {"type": "string"},
+              "parent": {"type": "string"},
+              "pos": {
+                  "type": "object",
+                  "properties": {
+                      "x": {"type": "number"},
+                      "y": {"type": "number"},
+                      "z": {"type": "number"}
+                  },
+                  "additionalProperties": false
+              }
+          },
+          "required": ["id", "uuid"],
+          "additionalProperties": true
+      }
+  },
+  "required": ["type", "content"],
+  "additionalProperties": false,
+  "allOf": [
+      {
+          "if": {
+              "properties": {"type": {"enum": ["parent", "parent_response"]}}
+          },
+          "then": {
+              "properties": {
+                  "content": {
+                      "required": ["parent"],
+                      "not": { "required": ["pos"] }
+                  }
+              }
+          }
+      },
+      {
+          "if": {
+              "properties": {"type": {"enum": ["update", "update_response"]}}
+          },
+          "then": {
+              "properties": {
+                  "content": {
+                      "required": ["pos"],
+                      "not": { "required": ["parent"] }
+                  }
+              }
+          }
+      }
+  ]
+}
+export const schemaValidate2 = ajv.compile(messageSchema2)

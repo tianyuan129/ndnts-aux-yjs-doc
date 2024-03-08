@@ -1,6 +1,6 @@
 import * as net from 'net'
 import { randomUUID } from 'crypto'
-import { schemaValidate } from './message-schema.ts'
+import { schemaValidate, schemaValidate2 } from './message-schema.ts'
 import * as Y from 'yjs'
 
 export class TcpServer {
@@ -16,20 +16,12 @@ export class TcpServer {
       this._objectMap.observeDeep(this.deepListener.bind(this))
       this._history = []
     }
-    private getResponseJson(result: number) {
-      return { kind: "Response", result: result}
-    }
-    private getCreateObjectJson(parent: string, assetId: string, objectId: string) {
-      return { kind: "CreateObject", 
-               parent: parent, assetId: assetId, objectId: objectId
-      }
-    }
     propagateToSockets(source: net.Socket | undefined, json: object) {
       this._history.push(json)
       this._sockets.forEach(sock => {
         if (sock != source) {
-          console.log(`writing back to ${sock.remoteAddress}:${sock.remotePort}`)
-          sock.write(JSON.stringify(json) + '\n')
+          console.log(`writing ${JSON.stringify(json)} back to ${sock.remoteAddress}:${sock.remotePort}`)
+          sock.write(JSON.stringify(json))
         }
       })
     }
@@ -57,8 +49,13 @@ export class TcpServer {
             else if (change.action == "update") {
               console.log(`Object "${key}" was updated.`, "New value", curr, "Previous value:", prev)
             }
-            const toProp = { kind: "CreateObject", 
-              parent: newObject.parent, assetId: newObject.assetId, objectId: newObject.objectId
+            const toProp = { type: "create_response", 
+              content: {
+                uuid: newObject.objectId,
+                id: newObject.unityId,
+                pos: newObject.variableMap.pos,
+                parent: newObject.parent
+              }
             }
             this.propagateToSockets(trans.origin, toProp)
             // write back to socket
@@ -77,9 +74,13 @@ export class TcpServer {
                 console.log(`Variable "${key}" was updated.`, "New value", curr, "Previous value:", prev)
               }
               // get the objectID then
-              const oid = submap.parent.get("objectId")
-              const toProp = { kind: "NetworkVariableAssignment",
-                objectId: oid, variableName: key, value: curr
+              const updateObject = submap.parent.toJSON()
+              const toProp = { type: "update_response",
+                content: {
+                  uuid: updateObject.objectId,
+                  id: updateObject.unityId,
+                  pos: updateObject.variableMap.pos
+                }
               }
               this.propagateToSockets(trans.origin, toProp)
             }
@@ -90,11 +91,12 @@ export class TcpServer {
     // on data coming in
     onData(socket: net.Socket, buffer: any) {
       const parsedJson = JSON.parse(buffer.toString())
-      if (schemaValidate(parsedJson)) {
+      console.log(parsedJson)
+      if (schemaValidate2(parsedJson)) {
         // console.log("received json")
         // console.log(parsedJson)
-        switch(parsedJson.kind) { 
-          case "CreateObjectRequest": {
+        switch(parsedJson.type) { 
+          case "create": {
             // const newObject = {objectId: randomUUID(),
             //   parent: parsedJson.parent, assetId: parsedJson.assetId,
             //   variableStore: {}
@@ -105,18 +107,22 @@ export class TcpServer {
             // newObject.observe(objectListener.bind(newObject))
             this.ydoc.transact(() => {
               const oid = randomUUID()
-              const variableMap = new Y.Map()
               newObject.set("objectId", oid)
-              newObject.set("parent", parsedJson.parent)
-              newObject.set("assetId", parsedJson.assetId)
+              newObject.set("unityId", parsedJson.content.id)
+              newObject.set("parent", parsedJson.content.parent)
+
+              // preload pos
+              const variableMap = new Y.Map()
+              variableMap.set("pos", parsedJson.content.pos)
               newObject.set("variableMap", variableMap)
               this._objectMap.set(oid, newObject)
             }, socket)
             // store.objStore[newObject.objectId] = newObject
             // write back in socket
-            socket.write(JSON.stringify(
-              this.getCreateObjectJson(newObject.get("parent"), newObject.get("assetId"), newObject.get("objectId"))
-            ) + '\n')
+            let replyJson = parsedJson
+            replyJson.type = "create_response"
+            replyJson.content.uuid = newObject.get("objectId")
+            socket.write(JSON.stringify(replyJson) + '\n')
             // then we should register 
             break; 
           }
@@ -127,24 +133,43 @@ export class TcpServer {
           case "History": {
             this._history.forEach(json => {
               socket.write(JSON.stringify(json) + '\n')
-              console.log(`wrote history for ${json.kind}`)
+              console.log(`wrote history for ${json.type}`)
             })
-            socket.write(JSON.stringify({ kind: "HistoryFinish" }) + '\n')
+            socket.write(JSON.stringify({ type: "HistoryFinish" }) + '\n')
             break; 
           }
-          case "NetworkVariableAssignment": {
+          case "update": {
             // the object of variable must be assigned first
-            if (this._objectMap.has(parsedJson.objectId)) {
-              // add an assignemtn section for it
-              const selected = this._objectMap.get(parsedJson.objectId)
+            if (this._objectMap.has(parsedJson.content.uuid)) {
+              const selected = this._objectMap.get(parsedJson.content.uuid)
               const selectedVariables = selected.get("variableMap")
               // if first time, register listener
               this.ydoc.transact(() => {
-                selectedVariables.set(parsedJson.variableName, parsedJson.value)
+                selectedVariables.set("pos", parsedJson.content.pos)
                 // write back
                 // objectMap.set(parsedJson.objectId, selected)
                 // selected.variableStore[parsedJson.variableName] = parsedJson.value
                 // write back in socket
+              }, socket)
+              let replyJson = parsedJson
+              replyJson.type = "update_response"
+              socket.write(replyJson)
+            }
+            else {
+              // write back in socket
+              socket.write(JSON.stringify(
+                this.getResponseJson(403)
+              ) + '\n')
+            }
+            break; 
+          }
+          case "parent": {
+            if (this._objectMap.has(parsedJson.content.uuid)) {
+              const selected = this._objectMap.get(parsedJson.content.uuid)
+              const selectedVariables = selected.get("parent")
+              // if first time, register listener
+              this.ydoc.transact(() => {
+                selectedVariables.set("parent", parsedJson.content.parent)
               }, socket)
               socket.write(JSON.stringify(
                 this.getResponseJson(200)
@@ -156,10 +181,7 @@ export class TcpServer {
                 this.getResponseJson(403)
               ) + '\n')
             }
-            break; 
-          }
-          case "TransformUpdate": {
-            break; 
+            break;
           }
           case "Response": {
             break; 
@@ -180,6 +202,7 @@ export class TcpServer {
       this._server.listen(port, ip, backlog)
       this._server.on('connection', socket => {
         // add socket into list
+        console.log("connected by ", socket.remotePort)
         this._sockets.push(socket)
         socket.on('data', buffer => this.onData(socket, buffer))
         socket.on('error', _ => {

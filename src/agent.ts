@@ -114,7 +114,7 @@ if (import.meta.main) {
     port: { type: "number", default: 3000 },
     ws: { type: "string", default: "wss://icear.cs.ucla.edu/ws/" },
     app: { type: "string"},
-    name: { type: "string"},
+    name: { type: "string", default: "node"},
   });
   const argv = await parser.argv;
   PORT = argv.port;

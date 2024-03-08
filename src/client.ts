@@ -3,9 +3,23 @@ import yargs from "yargs/yargs";
 
 const IP = '127.0.0.1'
 const create = {
-    kind: "CreateObjectRequest",
-    parent: "xxxxx",
-    assetId: "yyyyy"
+    type: "create",
+    content: {
+        id: "123",
+        uuid: "0"
+    }
+}
+let update = {
+    type: "update",
+    content: {
+        id: "123",
+        uuid: "0",
+        pos: {
+            x: 1,
+            y: 2,
+            z: 3
+        }
+    }
 }
 let assign = {
     kind: "NetworkVariableAssignment",
@@ -31,25 +45,26 @@ function start(socket: net.Socket) {
 }
 socket.connect(PORT, IP);
 socket.on('connect', function() { //Don't send until we're connected
+    start(socket)
     // delay for a while to catch up
-    console.log("O --> ", history)
     socket.on('data', buffer => {
         const rets = buffer.toString().split('\n')
         rets.forEach(ret => {
             const retObj = JSON.parse(ret)
             console.log("I <-- ", retObj)
-            if (retObj.kind == "HistoryFinish") {
-                start(socket)
-            }
-            if (retObj.kind == "CreateObject") {
-                assign.objectId = retObj.objectId
-                assign.value = [Math.random(), Math.random(), Math.random()]
+            if (retObj.type == "create_response") {
+                update.content.id = retObj.content.id
+                update.content.uuid = retObj.content.uuid
+                update.content.pos = {
+                    x: Math.random(),
+                    y: Math.random(),
+                    z: Math.random(),
+                }
                 setTimeout(() => {
-                    console.log("O --> ", assign)
-                    socket.write(JSON.stringify(assign))
+                    console.log("O --> ", update)
+                    socket.write(JSON.stringify(update))
                 }, DELAY)
             }
         })
     })
-    socket.write(JSON.stringify(history))
 });
