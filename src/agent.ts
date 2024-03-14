@@ -111,9 +111,9 @@ const main = async () => {
 
 if (import.meta.main) {
   const parser = yargs(Deno.args).options({
-    port: { type: "number", default: 3000 },
+    port: { type: "number", default: 6666 },
     ws: { type: "string", default: "wss://icear.cs.ucla.edu/ws/" },
-    app: { type: "string"},
+    app: { type: "string", default: "/app"},
     name: { type: "string", default: "node"},
   });
   const argv = await parser.argv;
